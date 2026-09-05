@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "HOME", href: "/" },
-  { label: "DIVISIONS", href: "/divisions" },
-  { label: "PROPERTY LOCATIONS", href: "/property-locations" },
+  { label: "DIVISIONS", href: "/#divisions" },
+  { label: "PROPERTY LOCATIONS", href: "/#property-locations" },
   { label: "GALLERY", href: "/gallery" },
-  { label: "ABOUT", href: "/about" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "ABOUT", href: "/#about" },
+  { label: "CONTACT", href: "/#contact" },
 ];
 
 export default function Footer() {

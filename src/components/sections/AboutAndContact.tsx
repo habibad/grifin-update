@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function AboutAndContact() {
   return (
     <section
-      id="about-contact"
-      className="relative w-full bg-[#EFEAE3] text-[#111820] overflow-hidden select-none border-t border-[#D9D3C7]"
+      id="about"
+      className="relative w-full bg-[#EFEAE3] text-[#111820] overflow-hidden select-none border-t border-[#D9D3C7] scroll-mt-10"
     >
       {/* Top Subtle Edge Shading (Paper / architectural depth) */}
       <div
@@ -28,7 +28,7 @@ export default function AboutAndContact() {
             fill
             unoptimized
             sizes="(max-width: 1024px) 100vw, 30vw"
-            className="object-cover object-center select-none transition-transform duration-700 hover:scale-[1.02]"
+            className="object-cover object-[center_30%] select-none transition-transform duration-700 hover:scale-[1.02]"
             priority
           />
         </div>
@@ -85,7 +85,10 @@ export default function AboutAndContact() {
           />
 
           {/* Right Column: Get In Touch (43.5% of right area) */}
-          <div className="w-full md:w-[43.5%] shrink-0 flex flex-col justify-between px-6 sm:px-10 md:px-0 md:pl-[28px] lg:pl-[36px] xl:pl-[48px] md:pr-[36px] lg:pr-[48px] xl:pr-[64px] py-8 sm:py-10 md:py-0 md:pt-[34px] lg:pt-[40px] xl:pt-[48px] md:pb-[34px] lg:pb-[40px] xl:pb-[48px]">
+          <div
+            id="contact"
+            className="w-full md:w-[43.5%] shrink-0 flex flex-col justify-between px-6 sm:px-10 md:px-0 md:pl-[28px] lg:pl-[36px] xl:pl-[48px] md:pr-[36px] lg:pr-[48px] xl:pr-[64px] py-8 sm:py-10 md:py-0 md:pt-[34px] lg:pt-[40px] xl:pt-[48px] md:pb-[34px] lg:pb-[40px] xl:pb-[48px] scroll-mt-20"
+          >
             <div>
               {/* Gold Eyebrow */}
               <span className="font-condensed text-[#B08B3E] font-semibold text-[10px] sm:text-[11px] xl:text-[12px] tracking-[0.16em] uppercase block">
@@ -159,7 +162,7 @@ export default function AboutAndContact() {
             {/* Solid Gold Button */}
             <div className="mt-6 sm:mt-7 md:mt-0 pt-0.5">
               <Link
-                href="/contact"
+                href="/#contact"
                 className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap bg-[#B08B3E] hover:bg-[#9A762E] text-white font-condensed font-semibold uppercase tracking-[0.14em] text-[10px] sm:text-[10.5px] xl:text-[11.5px] h-[32px] sm:h-[34px] xl:h-[38px] px-3.5 sm:px-4.5 xl:px-5 rounded-[1px] transition-all duration-300 shadow-[0_2px_6px_rgba(176,139,62,0.2)] hover:shadow-[0_4px_12px_rgba(176,139,62,0.35)] group"
               >
                 <span>LET&apos;S START A CONVERSATION</span>

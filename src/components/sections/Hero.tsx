@@ -5,7 +5,7 @@ import { MapPin, ArrowRight, ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#0B1117]">
+    <section id="home" className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#0B1117] scroll-mt-0">
       {/* 1. Full-Screen Architectural Background Image */}
       <div className="absolute inset-0 w-full h-full z-0 animate-hero-zoom">
         <Image
@@ -88,7 +88,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mt-7 md:mt-8">
             {/* Primary Gold CTA */}
             <Link
-              href="/property-locations"
+              href="/#property-locations"
               className="inline-flex items-center justify-center gap-2.5 h-[48px] sm:h-[50px] px-7 sm:px-8 bg-[#B8924B] hover:bg-[#C8A45D] text-white text-[12px] sm:text-[13px] font-bold tracking-[0.08em] uppercase rounded-[2px] transition-all duration-200 hover:-translate-y-0.5 shadow-md shadow-black/30 text-center"
             >
               <span>VIEW OUR PROPERTIES</span>
@@ -97,7 +97,7 @@ export default function Hero() {
 
             {/* Secondary Transparent CTA */}
             <Link
-              href="/divisions"
+              href="/#divisions"
               className="inline-flex items-center justify-center gap-2.5 h-[48px] sm:h-[50px] px-7 sm:px-8 bg-[#0B1117]/50 backdrop-blur-sm border border-[#B8924B]/90 hover:bg-[#B8924B] text-white text-[12px] sm:text-[13px] font-bold tracking-[0.08em] uppercase rounded-[2px] transition-all duration-200 hover:-translate-y-0.5 text-center"
             >
               <span>EXPLORE OUR DIVISIONS</span>

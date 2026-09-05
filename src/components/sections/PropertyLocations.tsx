@@ -46,7 +46,7 @@ export default function PropertyLocations() {
   return (
     <section
       id="property-locations"
-      className="relative w-full bg-[#0B1117] text-white py-12 sm:py-14 lg:py-16 overflow-hidden select-none border-t border-[#B08B3E]/20"
+      className="relative w-full bg-[#0B1117] text-white py-12 sm:py-14 lg:py-16 overflow-hidden select-none border-t border-[#B08B3E]/20 scroll-mt-10"
     >
       {/* Subtle Background Glow & Radial Vignette */}
       <div

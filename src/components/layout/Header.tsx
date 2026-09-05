@@ -13,11 +13,11 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: "HOME", href: "/" },
-  { label: "DIVISIONS", href: "/divisions" },
-  { label: "PROPERTY LOCATIONS", href: "/property-locations" },
+  { label: "DIVISIONS", href: "/#divisions" },
+  { label: "PROPERTY LOCATIONS", href: "/#property-locations" },
   { label: "GALLERY", href: "/gallery" },
-  { label: "ABOUT", href: "/about" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "ABOUT", href: "/#about" },
+  { label: "CONTACT", href: "/#contact" },
 ];
 
 interface HeaderProps {
@@ -27,16 +27,78 @@ interface HeaderProps {
 export default function Header({ variant = "transparent" }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const pathname = usePathname();
 
-  // Listen for scroll to optionally tint header subtly on scroll
+  // Listen for scroll to toggle sticky styling and subtle compacting
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Track active section on landing page via scroll position
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const handleScrollSpy = () => {
+      // Bottom of page: activate contact
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80
+      ) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Top of page: activate home
+      if (window.scrollY < 200) {
+        setActiveSection("home");
+        return;
+      }
+
+      const sections = ["contact", "about", "property-locations", "divisions"];
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 240 && rect.bottom > 100) {
+            setActiveSection(sectionId);
+            return;
+          }
+        }
+      }
+      setActiveSection("home");
+    };
+
+    handleScrollSpy();
+    window.addEventListener("scroll", handleScrollSpy, { passive: true });
+    return () => window.removeEventListener("scroll", handleScrollSpy);
+  }, [pathname]);
+
+  // If arriving from another page with a hash (e.g. from /gallery to /#divisions), smoothly scroll to target
+  useEffect(() => {
+    if (pathname === "/" && typeof window !== "undefined" && window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        setTimeout(() => {
+          const headerOffset = 82;
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+          setActiveSection(targetId);
+        }, 120);
+      }
+    }
+  }, [pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -50,26 +112,91 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
     };
   }, [mobileMenuOpen]);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (pathname === "/") {
+      if (href === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActiveSection("home");
+        if (window.location.hash) {
+          window.history.pushState(null, "", "/");
+        }
+      } else if (href.startsWith("/#")) {
+        e.preventDefault();
+        const targetId = href.replace("/#", "");
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const headerOffset = 82;
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+          setActiveSection(targetId);
+          window.history.pushState(null, "", href);
+        }
+      }
+    }
+  };
+
+  const checkIsActive = (href: string) => {
+    if (pathname === "/gallery") {
+      return href === "/gallery";
+    }
+    if (pathname === "/") {
+      if (href === "/" && activeSection === "home") {
+        return true;
+      }
+      if (href === `/#${activeSection}`) {
+        return true;
+      }
+      return false;
+    }
+    return pathname === href;
+  };
+
   const isSolid = variant === "solid";
 
   return (
     <header
       className={`${
         isSolid
-          ? "relative top-0 left-0 right-0 z-50 w-full bg-[#0B1117]"
-          : `absolute top-0 left-0 right-0 z-50 w-full transition-colors duration-300 ${
-              scrolled ? "bg-[#0B1117]/85 backdrop-blur-md" : "bg-transparent"
+          ? `sticky top-0 z-50 w-full transition-all duration-300 ${
+              scrolled
+                ? "bg-[#0B1117]/95 backdrop-blur-md shadow-lg shadow-black/40 border-b border-white/10"
+                : "bg-[#0B1117] border-b border-white/5"
+            }`
+          : `fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+              scrolled
+                ? "bg-[#0B1117]/95 backdrop-blur-md shadow-lg shadow-black/40 border-b border-white/10"
+                : "bg-transparent border-b border-transparent"
             }`
       }`}
     >
-      <div className="container-custom flex items-center justify-between h-[96px] md:h-[104px]">
+      <div
+        className={`container-custom flex items-center justify-between transition-all duration-300 ${
+          scrolled ? "h-[74px] md:h-[80px]" : "h-[96px] md:h-[104px]"
+        }`}
+      >
         {/* Left: Brand Logo */}
         <Link
           href="/"
+          onClick={(e) => handleNavClick(e, "/")}
           className="group flex items-center transition-transform duration-200 hover:scale-[1.01]"
           aria-label="Griffin Brothers Properties Home"
         >
-          <div className="relative w-[180px] sm:w-[205px] md:w-[225px] h-[52px] sm:h-[58px] md:h-[64px] flex-shrink-0">
+          <div
+            className={`relative flex-shrink-0 transition-all duration-300 ${
+              scrolled
+                ? "w-[160px] sm:w-[185px] md:w-[200px] h-[46px] sm:h-[50px] md:h-[54px]"
+                : "w-[180px] sm:w-[205px] md:w-[225px] h-[52px] sm:h-[58px] md:h-[64px]"
+            }`}
+          >
             <Image
               src="/images/griffin-brothers-new-logo.png"
               alt="Griffin Brothers Properties"
@@ -87,15 +214,17 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
           aria-label="Primary Navigation"
         >
           {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = checkIsActive(item.href);
             return (
               <div key={item.href} className="group relative flex flex-col items-center">
                 <Link
                   href={item.href}
-                  className={`text-[12px] font-bold tracking-[0.08em] uppercase transition-colors duration-200 py-1 ${isActive
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`text-[12px] font-bold tracking-[0.08em] uppercase transition-colors duration-200 py-1 ${
+                    isActive
                       ? "text-white"
                       : "text-white/85 hover:text-[#C8A45D]"
-                    }`}
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -119,8 +248,11 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
         {/* Right: Talk With Us CTA (Desktop) */}
         <div className="hidden lg:flex items-center">
           <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-2.5 border border-[#C8A45D] rounded-[2px] bg-transparent text-[12px] font-bold tracking-[0.08em] uppercase text-white transition-all duration-200 hover:bg-[#C8A45D] hover:text-[#0B1117]"
+            href="/#contact"
+            onClick={(e) => handleNavClick(e, "/#contact")}
+            className={`inline-flex items-center justify-center border border-[#C8A45D] rounded-[2px] bg-transparent font-bold tracking-[0.08em] uppercase text-white transition-all duration-300 hover:bg-[#C8A45D] hover:text-[#0B1117] ${
+              scrolled ? "px-5 py-2 text-[11.5px]" : "px-6 py-2.5 text-[12px]"
+            }`}
           >
             TALK WITH US
           </Link>
@@ -129,7 +261,8 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
         {/* Mobile / Tablet Hamburger Toggle */}
         <div className="flex xl:hidden items-center gap-4">
           <Link
-            href="/contact"
+            href="/#contact"
+            onClick={(e) => handleNavClick(e, "/#contact")}
             className="hidden sm:inline-flex lg:hidden items-center justify-center px-4 py-2 border border-[#B18A3A] rounded-[2px] bg-transparent text-[11px] font-semibold tracking-[0.08em] uppercase text-white hover:bg-[#B18A3A] hover:text-[#111820] transition-colors"
           >
             TALK WITH US
@@ -159,7 +292,10 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleNavClick(e, "/");
+              }}
               className="flex items-center"
               aria-label="Griffin Brothers Properties Home"
             >
@@ -186,7 +322,7 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
           {/* Links List */}
           <nav className="flex flex-col gap-6 my-auto py-8">
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = checkIsActive(item.href);
               return (
                 <div key={item.href} className="flex items-center gap-3">
                   {isActive && (
@@ -194,11 +330,15 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
                   )}
                   <Link
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`text-2xl font-bold uppercase tracking-[0.06em] font-[var(--font-condensed)] transition-colors ${isActive
+                    onClick={(e) => {
+                      setMobileMenuOpen(false);
+                      handleNavClick(e, item.href);
+                    }}
+                    className={`text-2xl font-bold uppercase tracking-[0.06em] font-[var(--font-condensed)] transition-colors ${
+                      isActive
                         ? "text-[#B18A3A]"
                         : "text-white hover:text-[#B18A3A]"
-                      }`}
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -210,8 +350,11 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
           {/* Bottom CTA & Info */}
           <div className="flex flex-col gap-4 pt-6 border-t border-white/10">
             <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/#contact"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleNavClick(e, "/#contact");
+              }}
               className="w-full text-center py-4 bg-[#B18A3A] text-[#111820] text-sm font-bold tracking-[0.08em] uppercase rounded-[2px] hover:bg-[#C7A45A] transition-colors"
             >
               TALK WITH US

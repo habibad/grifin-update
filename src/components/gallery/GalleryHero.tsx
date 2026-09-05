@@ -23,7 +23,7 @@ export default function GalleryHero() {
       />
 
       {/* 2. Right Background: Classical Commercial Building Architectural Line Sketch & Crest Watermark */}
-      <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[68%] md:w-[58%] lg:w-[52%] pointer-events-none z-[1] select-none opacity-85 mix-blend-multiply flex items-center justify-end">
+      {/* <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[68%] md:w-[58%] lg:w-[52%] pointer-events-none z-[1] select-none opacity-85 mix-blend-multiply flex items-center justify-end">
         <div className="relative w-full h-full max-h-[340px] sm:max-h-[380px]">
           <Image
             src="/images/gallery/reference/hero-sketch-clean.png"
@@ -34,7 +34,7 @@ export default function GalleryHero() {
             className="object-contain object-right"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* 3. Main Content (Exact Layout from Reference Image) */}
       <div className="container-custom relative z-10 w-full max-w-[1220px]">

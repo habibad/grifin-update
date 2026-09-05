@@ -45,6 +45,11 @@
   font-family: var(--font-lora), "Lora", Georgia, serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
 html,
 body {
   margin: 0;
