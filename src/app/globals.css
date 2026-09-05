@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  --color-charcoal: #111820;
+  --color-deep-charcoal: #0B1117;
+  --color-warm-ivory: #F3EFE6;
+  --color-gold: #B18A3A;
+  --color-light-gold: #C7A45A;
+  --color-white: #FFFFFF;
+  --color-warm-gray: #A39E93;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  --container-max-width: 1440px;
+  --container-padding-desktop: 80px;
+  --container-padding-tablet: 40px;
+  --container-padding-mobile: 24px;
+}
+
+@theme {
+  --color-charcoal: #111820;
+  --color-deep-charcoal: #0B1117;
+  --color-warm-ivory: #F3EFE6;
+  --color-brand-gold: #B18A3A;
+  --color-light-gold: #C7A45A;
+  --color-warm-gray: #A39E93;
+
+  --font-condensed: var(--font-oswald), "Oswald", sans-serif;
+  --font-editorial: var(--font-dm-serif), "DM Serif Display", Georgia, serif;
+  --font-serif-story: var(--font-lora), "Lora", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", "Inter", sans-serif;
+}
+
+.font-condensed {
+  font-family: var(--font-oswald), "Oswald", sans-serif;
+}
+
+.font-serif-story {
+  font-family: var(--font-lora), "Lora", Georgia, serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-deep-charcoal);
+  color: #ffffff;
+  font-family: var(--font-manrope), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities for Griffin Brothers Brand */
+.container-custom {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-custom {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+/* Keyframes for subtle entrance and floating indicator */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes heroZoom {
+  0% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-zoom {
+  animation: heroZoom 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Nav Link Hover Underline Animation */
+.nav-link-hover {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  transition: color 250ms ease;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #B18A3A;
+  transition: all 250ms ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+}
