@@ -46,24 +46,24 @@ export default function FoundersStory() {
       </div>
 
       {/* 3. Main Content: Perfectly Unified Composition */}
-      <div className="relative z-10 w-full max-w-[1220px] mx-auto min-h-[380px] sm:min-h-[410px] md:min-h-[440px] lg:min-h-[460px] flex flex-col md:flex-row items-stretch md:items-end justify-center px-6 sm:px-6 md:px-8">
-        {/* Left: Hand-Drawn Portrait of Jeff & Lynn Griffin + Architectural Blueprint */}
-        <div className="relative w-full md:w-[48%] lg:w-[47%] min-h-[260px] sm:min-h-[340px] md:min-h-[430px] lg:min-h-[460px] flex items-end justify-center md:justify-end overflow-hidden">
-          <div className="relative w-full max-w-[440px] sm:max-w-[500px] md:max-w-[560px] h-[260px] sm:h-[340px] md:h-[430px] lg:h-[460px] flex items-end mx-auto md:mx-0">
+      <div className="relative z-10 w-full max-w-[1240px] mx-auto py-10 sm:py-14 md:py-16 lg:py-18 flex flex-col md:flex-row items-center justify-center px-6 sm:px-8 gap-8 md:gap-6">
+        {/* Left: Clean Digital Ink Illustration of Jeff & Lynn Griffin */}
+        <div className="relative w-full md:w-[51%] lg:w-[53%] flex items-center justify-center md:justify-end">
+          <div className="relative w-full max-w-[480px] sm:max-w-[560px] md:max-w-[630px] lg:max-w-[670px] aspect-[980/435]">
             <Image
-              src="/images/founders-portrait-alpha.png"
-              alt="Jeff & Lynn Griffin hand-drawn illustration with historic Shoals architecture"
+              src="/images/founders-portrait-clean.png"
+              alt="Jeff and Lynn Griffin clean digital ink illustration drawing"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 47vw"
-              className="object-contain object-bottom md:object-right-bottom select-none"
+              sizes="(max-width: 768px) 100vw, 53vw"
+              className="object-contain object-center md:object-right select-none mix-blend-multiply"
             />
           </div>
         </div>
 
         {/* Right: Gold Bar, Headline, Philosophy Quote & Signature */}
-        <div className="relative w-full md:w-[52%] lg:w-[53%] flex flex-col justify-center pt-5 pb-12 sm:py-10 md:py-12 lg:py-14 md:pl-6 lg:pl-8">
-          <div className="max-w-[540px] w-full mx-auto md:mx-0">
+        <div className="relative w-full md:w-[49%] lg:w-[47%] flex flex-col justify-center md:pl-4 lg:pl-8">
+          <div className="max-w-[490px] w-full mx-auto md:mx-0">
             {/* Antique Gold Accent Bar */}
             <div
               className="w-10 sm:w-11 h-[2.5px] bg-[#B08B3E] mb-4 sm:mb-5 rounded-[0.5px]"
@@ -71,7 +71,7 @@ export default function FoundersStory() {
             />
 
             {/* Editorial Headline with Responsive Line Breaks */}
-            <h2 className="font-serif-story text-[19px] sm:text-[22px] md:text-[23px] lg:text-[25px] xl:text-[26.5px] font-semibold text-[#111820] leading-[1.3] tracking-[-0.015em]">
+            <h2 className="font-serif-story text-[20px] sm:text-[23px] md:text-[24px] lg:text-[26.5px] xl:text-[28px] font-semibold text-[#111820] leading-[1.28] tracking-[-0.015em]">
               We&apos;re a family-owned{" "}
               <br className="sm:hidden" />
               real estate company
@@ -79,8 +79,8 @@ export default function FoundersStory() {
               with deep roots in the Shoals.
             </h2>
 
-            {/* Philosophy Body Quote (Tuned max-width for 4-line editorial cadence) */}
-            <p className="font-serif-story text-[14px] sm:text-[15.5px] md:text-[16px] lg:text-[17px] font-normal text-[#252D36] leading-[1.58] mt-4 sm:mt-5 max-w-[395px]">
+            {/* Philosophy Body Quote */}
+            <p className="font-serif-story text-[14px] sm:text-[15.5px] md:text-[16px] lg:text-[17px] font-normal text-[#252D36] leading-[1.58] mt-4 sm:mt-5 max-w-[420px]">
               Our approach is simple: build carefully, own for the long term, and treat every property and tenant like it matters &ndash; because to us, it does.
             </p>
 
