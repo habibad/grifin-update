@@ -57,16 +57,16 @@ export default function Footer() {
           <div className="w-full md:w-auto flex items-center justify-center md:justify-start">
             <Link
               href="/"
-              className="relative w-[165px] sm:w-[185px] lg:w-[205px] h-[52px] sm:h-[58px] lg:h-[65px] transition-transform duration-300 hover:scale-[1.02] flex items-center"
+              className="relative w-[180px] sm:w-[205px] lg:w-[225px] h-[52px] sm:h-[58px] lg:h-[65px] transition-transform duration-300 hover:scale-[1.02] flex items-center"
               title="Griffin Brothers Properties Home"
             >
               <Image
-                src="/images/footer-brand-logo.png"
+                src="/images/griffin-brothers-new-logo.png"
                 alt="Griffin Brothers Properties"
                 fill
                 unoptimized
-                sizes="(max-width: 640px) 165px, (max-width: 1024px) 185px, 205px"
-                className="object-contain object-left select-none filter drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
+                sizes="(max-width: 640px) 180px, (max-width: 1024px) 205px, 225px"
+                className="object-contain object-left select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
               />
             </Link>
           </div>

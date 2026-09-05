@@ -55,29 +55,18 @@ export default function Header() {
         {/* Left: Brand Logo */}
         <Link
           href="/"
-          className="group flex items-center gap-3 sm:gap-3.5 transition-transform duration-200 hover:scale-[1.01]"
+          className="group flex items-center transition-transform duration-200 hover:scale-[1.01]"
           aria-label="Griffin Brothers Properties Home"
         >
-          <div className="relative w-[38px] h-[44px] sm:w-[42px] sm:h-[48px] flex-shrink-0">
+          <div className="relative w-[180px] sm:w-[205px] md:w-[225px] h-[52px] sm:h-[58px] md:h-[64px] flex-shrink-0">
             <Image
-              src="/images/griffin-crest-gold.png"
-              alt="Griffin Brothers"
+              src="/images/griffin-brothers-new-logo.png"
+              alt="Griffin Brothers Properties"
               fill
-              sizes="48px"
+              sizes="(max-width: 640px) 180px, (max-width: 768px) 205px, 225px"
               priority
-              className="object-contain"
+              className="object-contain object-left"
             />
-          </div>
-          <div className="flex flex-col justify-center leading-none">
-            <span className="font-[var(--font-editorial)] text-[17px] sm:text-[19px] font-bold tracking-[0.14em] text-[#C8A45D] uppercase">
-              GRIFFIN
-            </span>
-            <span className="font-[var(--font-sans)] text-[12px] sm:text-[13px] font-extrabold tracking-[0.20em] text-white uppercase mt-1">
-              BROTHERS
-            </span>
-            <span className="font-[var(--font-sans)] text-[8.5px] sm:text-[9px] font-semibold tracking-[0.26em] text-white/70 uppercase mt-0.5">
-              PROPERTIES
-            </span>
           </div>
         </Link>
 
@@ -160,27 +149,17 @@ export default function Header() {
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3"
+              className="flex items-center"
+              aria-label="Griffin Brothers Properties Home"
             >
-              <div className="relative w-[36px] h-[42px] flex-shrink-0">
+              <div className="relative w-[180px] h-[52px] flex-shrink-0">
                 <Image
-                  src="/images/griffin-crest-gold.png"
-                  alt="Griffin Brothers"
+                  src="/images/griffin-brothers-new-logo.png"
+                  alt="Griffin Brothers Properties"
                   fill
-                  sizes="42px"
-                  className="object-contain"
+                  sizes="180px"
+                  className="object-contain object-left"
                 />
-              </div>
-              <div className="flex flex-col justify-center leading-none">
-                <span className="font-[var(--font-editorial)] text-[16px] font-bold tracking-[0.14em] text-[#C8A45D] uppercase">
-                  GRIFFIN
-                </span>
-                <span className="font-[var(--font-sans)] text-[11.5px] font-extrabold tracking-[0.20em] text-white uppercase mt-0.5">
-                  BROTHERS
-                </span>
-                <span className="font-[var(--font-sans)] text-[8px] font-semibold tracking-[0.26em] text-white/70 uppercase mt-0.5">
-                  PROPERTIES
-                </span>
               </div>
             </Link>
             <button
