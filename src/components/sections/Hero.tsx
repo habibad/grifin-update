@@ -9,7 +9,7 @@ export default function Hero() {
       {/* 1. Full-Screen Architectural Background Image */}
       <div className="absolute inset-0 w-full h-full z-0 animate-hero-zoom">
         <Image
-          src="/images/hero-building.png"
+          src="/client/Hero Page  top photo.jpeg"
           alt="Griffin Brothers Properties Commercial Architecture in Shoals, Alabama"
           fill
           priority
@@ -46,16 +46,16 @@ export default function Hero() {
         />
       </div>
 
-      {/* 2. Griffin Sky Watermark (Upper Right) */}
+      {/* 2. Griffin Crest Watermark (Upper Right Sky) */}
       <div
-        className="absolute right-[2%] md:right-[4%] xl:right-[6%] top-[65px] md:top-[80px] w-[280px] sm:w-[360px] md:w-[440px] lg:w-[480px] h-[340px] sm:h-[440px] md:h-[540px] lg:h-[600px] z-10 pointer-events-none select-none opacity-[0.20] hidden sm:block"
+        className="absolute right-[2%] md:right-[4%] xl:right-[6%] top-[65px] md:top-[80px] w-[260px] sm:w-[340px] md:w-[420px] lg:w-[460px] h-[270px] sm:h-[350px] md:h-[430px] lg:h-[470px] z-10 pointer-events-none select-none opacity-[0.14] mix-blend-screen hidden sm:block"
         aria-hidden="true"
       >
         <Image
-          src="/images/griffin-watermark.png"
+          src="/images/watermarks/new-griffin-crest-gold-hires.png"
           alt=""
           fill
-          sizes="(max-width: 768px) 300px, 480px"
+          sizes="(max-width: 768px) 340px, 460px"
           priority
           className="object-contain object-right-top"
         />

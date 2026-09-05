@@ -20,7 +20,11 @@ const NAV_ITEMS: NavItem[] = [
   { label: "CONTACT", href: "/contact" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  variant?: "transparent" | "solid";
+}
+
+export default function Header({ variant = "transparent" }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -46,10 +50,17 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
+  const isSolid = variant === "solid";
+
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 w-full transition-colors duration-300 ${scrolled ? "bg-[#0B1117]/85 backdrop-blur-md" : "bg-transparent"
-        }`}
+      className={`${
+        isSolid
+          ? "relative top-0 left-0 right-0 z-50 w-full bg-[#0B1117]"
+          : `absolute top-0 left-0 right-0 z-50 w-full transition-colors duration-300 ${
+              scrolled ? "bg-[#0B1117]/85 backdrop-blur-md" : "bg-transparent"
+            }`
+      }`}
     >
       <div className="container-custom flex items-center justify-between h-[96px] md:h-[104px]">
         {/* Left: Brand Logo */}

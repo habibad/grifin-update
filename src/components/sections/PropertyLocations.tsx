@@ -59,14 +59,14 @@ export default function PropertyLocations() {
 
       {/* Griffin Crest Silhouette Watermark (Far Right Background) */}
       <div
-        className="absolute right-[-2%] sm:right-[1%] lg:right-[2%] top-1/2 -translate-y-1/2 w-[220px] sm:w-[260px] lg:w-[300px] h-[90%] pointer-events-none z-[1] select-none opacity-[0.09]"
+        className="absolute right-0 sm:right-[1%] lg:right-[2%] top-1/2 -translate-y-1/2 w-[220px] sm:w-[270px] lg:w-[320px] h-[85%] pointer-events-none z-[1] select-none opacity-[0.14] mix-blend-screen"
         aria-hidden="true"
       >
         <Image
-          src="/images/griffin-sky-watermark-hires.png"
+          src="/images/watermarks/new-griffin-crest-gold-hires.png"
           alt=""
           fill
-          sizes="300px"
+          sizes="320px"
           className="object-contain object-right"
         />
       </div>

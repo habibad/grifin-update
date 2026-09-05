@@ -31,16 +31,16 @@ export default function FoundersStory() {
         }}
       />
 
-      {/* 2. Blind-Embossed Griffin Crest Watermark (Right Background) */}
+      {/* 2. Metallic Gold Griffin Crest Watermark (Subtle Elegant Parchment Seal) */}
       <div
-        className="absolute right-[-10%] sm:right-[1%] md:right-[2%] lg:right-[3%] xl:right-[4%] top-1/2 -translate-y-1/2 w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[370px] h-[85%] max-h-[440px] pointer-events-none z-[1] select-none opacity-20 sm:opacity-50 md:opacity-60 mix-blend-multiply"
+        className="absolute right-[-4%] sm:right-[0%] md:right-[1%] lg:right-[2%] xl:right-[3%] top-1/2 -translate-y-1/2 w-[220px] sm:w-[260px] md:w-[310px] lg:w-[350px] xl:w-[380px] h-[85%] max-h-[420px] pointer-events-none z-[1] select-none opacity-[0.12] sm:opacity-[0.14] md:opacity-[0.16] mix-blend-multiply"
         aria-hidden="true"
       >
         <Image
-          src="/images/griffin-paper-watermark-clean.png"
+          src="/images/watermarks/new-griffin-crest-gold-hires.png"
           alt=""
           fill
-          sizes="(max-width: 768px) 220px, 370px"
+          sizes="(max-width: 768px) 260px, 380px"
           className="object-contain object-right"
         />
       </div>

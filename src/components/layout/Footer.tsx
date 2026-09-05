@@ -35,17 +35,17 @@ export default function Footer() {
         />
       </div>
 
-      {/* Far Right: Griffin Mascot Watermark Silhouette */}
+      {/* Far Right: Griffin Crest Watermark Silhouette */}
       <div
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[190px] sm:w-[240px] lg:w-[285px] h-[94%] pointer-events-none z-[1] select-none opacity-[0.20] mix-blend-screen"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[160px] sm:w-[200px] lg:w-[240px] h-[90%] pointer-events-none z-[1] select-none opacity-[0.16] mix-blend-screen"
         aria-hidden="true"
       >
         <Image
-          src="/images/griffin-sky-watermark-hires.png"
+          src="/images/watermarks/new-griffin-crest-gold-hires.png"
           alt=""
           fill
           unoptimized
-          sizes="285px"
+          sizes="240px"
           className="object-contain object-right"
         />
       </div>
