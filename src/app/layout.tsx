@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Oswald, DM_Serif_Display, Manrope, Lora } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 
 const oswald = Oswald({
   weight: ["500", "600", "700"],
@@ -68,7 +69,7 @@ export default function RootLayout({
       className={`${oswald.variable} ${dmSerifDisplay.variable} ${manrope.variable} ${lora.variable}`}
     >
       <body className="bg-[#0B1117] text-white selection:bg-[#B18A3A] selection:text-[#0B1117]">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const NAV_ITEMS = [
   { label: "HOME", href: "/" },
@@ -40,21 +41,23 @@ export default function Footer() {
         className="absolute right-0 top-1/2 -translate-y-1/2 w-[160px] sm:w-[200px] lg:w-[240px] h-[90%] pointer-events-none z-[1] select-none opacity-[0.16] mix-blend-screen"
         aria-hidden="true"
       >
-        <Image
-          src="/images/watermarks/new-griffin-crest-gold-hires.png"
-          alt=""
-          fill
-          unoptimized
-          sizes="240px"
-          className="object-contain object-right"
-        />
+        <ScrollReveal variant="zoom-in" delay={120} duration={1000} className="w-full h-full">
+          <Image
+            src="/images/watermarks/new-griffin-crest-gold-hires.png"
+            alt=""
+            fill
+            unoptimized
+            sizes="240px"
+            className="object-contain object-right"
+          />
+        </ScrollReveal>
       </div>
 
       {/* Main Content Container - Balanced 3-column layout with generous vertical breathing room */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-9 sm:py-12 lg:py-14">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           {/* Left: Brand Logo */}
-          <div className="w-full md:w-auto flex items-center justify-center md:justify-start">
+          <ScrollReveal variant="fade-right" delay={80} duration={750} className="w-full md:w-auto flex items-center justify-center md:justify-start">
             <Link
               href="/"
               className="relative w-[180px] sm:w-[205px] lg:w-[225px] h-[52px] sm:h-[58px] lg:h-[65px] transition-transform duration-300 hover:scale-[1.02] flex items-center"
@@ -69,10 +72,10 @@ export default function Footer() {
                 className="object-contain object-left select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
               />
             </Link>
-          </div>
+          </ScrollReveal>
 
           {/* Middle: Navigation Links (Top) & Copyright (Bottom) */}
-          <div className="flex flex-col items-center justify-center text-center">
+          <ScrollReveal variant="fade-up" delay={160} duration={750} className="flex flex-col items-center justify-center text-center">
             {/* Nav Links Row */}
             <nav
               aria-label="Footer navigation"
@@ -93,10 +96,10 @@ export default function Footer() {
             <p className="font-sans text-[11px] sm:text-[11.5px] lg:text-[12px] text-[#B8A27C] mt-3.5 sm:mt-4 lg:mt-4.5 tracking-[0.02em] font-normal drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               &copy; 2025 Griffin Brothers Properties. All rights reserved.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Right: Location Heading & Social Media Icons */}
-          <div className="w-full md:w-auto flex flex-col items-center md:items-center justify-center">
+          <ScrollReveal variant="fade-left" delay={240} duration={750} className="w-full md:w-auto flex flex-col items-center md:items-center justify-center">
             {/* Location */}
             <span className="font-sans font-bold uppercase tracking-[0.08em] text-white text-[12px] sm:text-[13px] lg:text-[13.5px] block whitespace-nowrap drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               THE SHOALS, ALABAMA
@@ -153,7 +156,7 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </footer>

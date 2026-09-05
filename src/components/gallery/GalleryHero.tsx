@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function GalleryHero() {
   return (
@@ -22,44 +23,38 @@ export default function GalleryHero() {
         }}
       />
 
-      {/* 2. Right Background: Classical Commercial Building Architectural Line Sketch & Crest Watermark */}
-      {/* <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[68%] md:w-[58%] lg:w-[52%] pointer-events-none z-[1] select-none opacity-85 mix-blend-multiply flex items-center justify-end">
-        <div className="relative w-full h-full max-h-[340px] sm:max-h-[380px]">
-          <Image
-            src="/images/gallery/reference/hero-sketch-clean.png"
-            alt=""
-            fill
-            sizes="(max-width: 768px) 100vw, 55vw"
-            priority
-            className="object-contain object-right"
-          />
-        </div>
-      </div> */}
-
-      {/* 3. Main Content (Exact Layout from Reference Image) */}
+      {/* 3. Main Content */}
       <div className="container-custom relative z-10 w-full max-w-[1220px]">
         <div className="max-w-2xl">
           {/* Small Gold Kicker */}
-          <span className="font-condensed font-bold text-[#B08B3E] text-[11px] sm:text-[12px] tracking-[0.2em] uppercase block mb-2">
-            GALLERY
-          </span>
+          <ScrollReveal variant="fade-up" delay={80} duration={600}>
+            <span className="font-condensed font-bold text-[#B08B3E] text-[11px] sm:text-[12px] tracking-[0.2em] uppercase block mb-2">
+              GALLERY
+            </span>
+          </ScrollReveal>
 
           {/* Editorial Serif Headline: "Life at Griffin Brothers." */}
-          <h1 className="font-serif-story font-bold text-[#111820] text-3xl sm:text-4xl md:text-[46px] lg:text-[50px] tracking-[-0.015em] leading-[1.12] whitespace-normal sm:whitespace-nowrap">
-            Life at Griffin Brothers.
-          </h1>
+          <ScrollReveal variant="fade-up" delay={180} duration={750}>
+            <h1 className="font-serif-story font-bold text-[#111820] text-3xl sm:text-4xl md:text-[46px] lg:text-[50px] tracking-[-0.015em] leading-[1.12] whitespace-normal sm:whitespace-nowrap">
+              Life at Griffin Brothers.
+            </h1>
+          </ScrollReveal>
 
           {/* Editorial Subtitle */}
-          <p className="font-serif-story text-[#333E48] text-[13.5px] sm:text-[15px] md:text-[16px] leading-[1.55] mt-3 sm:mt-4 max-w-md">
-            A look at the places we build, the properties we care for, and the
-            people behind them.
-          </p>
+          <ScrollReveal variant="fade-up" delay={280} duration={750}>
+            <p className="font-serif-story text-[#333E48] text-[13.5px] sm:text-[15px] md:text-[16px] leading-[1.55] mt-3 sm:mt-4 max-w-md">
+              A look at the places we build, the properties we care for, and the
+              people behind them.
+            </p>
+          </ScrollReveal>
 
           {/* Antique Gold Accent Bar */}
-          <div
-            className="w-10 h-[2.5px] bg-[#B08B3E] mt-4 sm:mt-5 rounded-[0.5px]"
-            aria-hidden="true"
-          />
+          <ScrollReveal variant="fade-up" delay={380} duration={600}>
+            <div
+              className="w-10 h-[2.5px] bg-[#B08B3E] mt-4 sm:mt-5 rounded-[0.5px]"
+              aria-hidden="true"
+            />
+          </ScrollReveal>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 interface LocationItem {
   id: string;
@@ -62,20 +63,22 @@ export default function PropertyLocations() {
         className="absolute right-0 sm:right-[1%] lg:right-[2%] top-1/2 -translate-y-1/2 w-[220px] sm:w-[270px] lg:w-[320px] h-[85%] pointer-events-none z-[1] select-none opacity-[0.14] mix-blend-screen"
         aria-hidden="true"
       >
-        <Image
-          src="/images/watermarks/new-griffin-crest-gold-hires.png"
-          alt=""
-          fill
-          sizes="320px"
-          className="object-contain object-right"
-        />
+        <ScrollReveal variant="zoom-in" delay={150} duration={1200} className="w-full h-full">
+          <Image
+            src="/images/watermarks/new-griffin-crest-gold-hires.png"
+            alt=""
+            fill
+            sizes="320px"
+            className="object-contain object-right"
+          />
+        </ScrollReveal>
       </div>
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-8 lg:gap-0">
           {/* Left: Section Header */}
-          <div className="w-full lg:w-[24%] xl:w-[22%] flex flex-col justify-center lg:pr-6 lg:border-r border-white/10">
+          <ScrollReveal variant="fade-right" delay={80} duration={750} className="w-full lg:w-[24%] xl:w-[22%] flex flex-col justify-center lg:pr-6 lg:border-r border-white/10">
             <span className="font-condensed text-[#B08B3E] font-bold text-[11px] sm:text-[11.5px] tracking-[0.18em] uppercase">
               Our Property Locations
             </span>
@@ -84,13 +87,16 @@ export default function PropertyLocations() {
               <br />
               proud to call home.
             </h2>
-          </div>
+          </ScrollReveal>
 
           {/* Right: 5 Property Logos Row */}
           <div className="w-full lg:w-[76%] xl:w-[78%] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 items-stretch">
             {LOCATIONS.map((loc, idx) => (
-              <div
+              <ScrollReveal
                 key={loc.id}
+                variant="fade-up"
+                delay={100 + idx * 80}
+                duration={700}
                 className={`flex items-center justify-center p-3.5 sm:p-4 lg:p-6 transition-colors duration-300 ${
                   // Desktop dividers: vertical divider on all except last
                   idx !== LOCATIONS.length - 1 ? "lg:border-r lg:border-white/10" : "lg:border-r-0"
@@ -124,7 +130,7 @@ export default function PropertyLocations() {
                     />
                   </div>
                 </Link>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

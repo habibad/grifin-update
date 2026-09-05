@@ -27,13 +27,18 @@ interface HeaderProps {
 export default function Header({ variant = "transparent" }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState<string>("home");
   const pathname = usePathname();
 
-  // Listen for scroll to toggle sticky styling and subtle compacting
+  // Listen for scroll to toggle sticky styling, subtle compacting, and scroll progress
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100)));
+      }
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -365,6 +370,13 @@ export default function Header({ variant = "transparent" }: HeaderProps) {
           </div>
         </div>
       )}
+
+      {/* Subtle Luxury Scroll Progress Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-[#B18A3A] via-[#E6C687] to-[#B18A3A] transition-all duration-150 pointer-events-none opacity-80"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
     </header>
   );
 }

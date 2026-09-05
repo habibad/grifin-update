@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight, ArrowDown } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function Hero() {
   return (
@@ -51,87 +52,105 @@ export default function Hero() {
         className="absolute right-[2%] md:right-[4%] xl:right-[6%] top-[65px] md:top-[80px] w-[260px] sm:w-[340px] md:w-[420px] lg:w-[460px] h-[270px] sm:h-[350px] md:h-[430px] lg:h-[470px] z-10 pointer-events-none select-none opacity-[0.14] mix-blend-screen hidden sm:block"
         aria-hidden="true"
       >
-        <Image
-          src="/images/watermarks/new-griffin-crest-gold-hires.png"
-          alt=""
-          fill
-          sizes="(max-width: 768px) 340px, 460px"
-          priority
-          className="object-contain object-right-top"
-        />
+        <ScrollReveal variant="zoom-in" delay={200} duration={1200} className="w-full h-full">
+          <Image
+            src="/images/watermarks/new-griffin-crest-gold-hires.png"
+            alt=""
+            fill
+            sizes="(max-width: 768px) 340px, 460px"
+            priority
+            className="object-contain object-right-top"
+          />
+        </ScrollReveal>
       </div>
 
       {/* 3. Hero Main Content Grid */}
       <div className="container-custom relative z-20 flex-1 flex flex-col justify-center pt-[135px] md:pt-[150px] lg:pt-[155px] pb-[40px] md:pb-[50px]">
         <div className="max-w-[780px] xl:max-w-[840px] w-full">
-          {/* Main Headline — Exact 3-line Layout matching reference */}
+          {/* Main Headline — Exact 3-line Layout matching reference with sequential reveals */}
           <h1 className="font-condensed font-bold uppercase tracking-[-0.01em] text-[38px] sm:text-[52px] md:text-[64px] lg:text-[74px] xl:text-[82px] 2xl:text-[86px] leading-[1.04] sm:leading-[1.06] text-white select-none flex flex-col gap-1 sm:gap-1.5 md:gap-2">
-            <span className="block whitespace-nowrap text-white">WE OWN IT.</span>
-            <span className="block whitespace-nowrap text-white">WE BUILD IT.</span>
-            <span className="block whitespace-nowrap text-[#C8A45D]">WE MAKE IT WORK.</span>
+            <ScrollReveal variant="fade-up" delay={80} duration={700}>
+              <span className="block whitespace-nowrap text-white">WE OWN IT.</span>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" delay={200} duration={700}>
+              <span className="block whitespace-nowrap text-white">WE BUILD IT.</span>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" delay={320} duration={700}>
+              <span className="block whitespace-nowrap text-[#C8A45D]">WE MAKE IT WORK.</span>
+            </ScrollReveal>
           </h1>
 
           {/* Decorative Gold Segmented Line */}
-          <div className="flex items-center gap-1.5 mt-6 md:mt-7" aria-hidden="true">
-            <div className="w-10 sm:w-11 h-[2px] bg-[#C8A45D]" />
-            <div className="w-16 sm:w-20 h-[2px] bg-[#C8A45D]" />
-          </div>
+          <ScrollReveal variant="fade-up" delay={440} duration={600}>
+            <div className="flex items-center gap-1.5 mt-6 md:mt-7" aria-hidden="true">
+              <div className="w-10 sm:w-11 h-[2px] bg-[#C8A45D]" />
+              <div className="w-16 sm:w-20 h-[2px] bg-[#C8A45D]" />
+            </div>
+          </ScrollReveal>
 
           {/* Editorial Description */}
-          <p className="font-[var(--font-editorial)] text-[18px] sm:text-[20px] md:text-[21px] lg:text-[22px] leading-[1.38] text-[#F3EFE6]/95 mt-5 md:mt-6 max-w-[460px]">
-            Commercial real estate ownership
-            <br className="hidden sm:inline" />
-            {" "}and development in the Shoals.
-          </p>
+          <ScrollReveal variant="fade-up" delay={540} duration={700}>
+            <p className="font-[var(--font-editorial)] text-[18px] sm:text-[20px] md:text-[21px] lg:text-[22px] leading-[1.38] text-[#F3EFE6]/95 mt-5 md:mt-6 max-w-[460px]">
+              Commercial real estate ownership
+              <br className="hidden sm:inline" />
+              {" "}and development in the Shoals.
+            </p>
+          </ScrollReveal>
 
           {/* Dual Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mt-7 md:mt-8">
-            {/* Primary Gold CTA */}
-            <Link
-              href="/#property-locations"
-              className="inline-flex items-center justify-center gap-2.5 h-[48px] sm:h-[50px] px-7 sm:px-8 bg-[#B8924B] hover:bg-[#C8A45D] text-white text-[12px] sm:text-[13px] font-bold tracking-[0.08em] uppercase rounded-[2px] transition-all duration-200 hover:-translate-y-0.5 shadow-md shadow-black/30 text-center"
-            >
-              <span>VIEW OUR PROPERTIES</span>
-              <ArrowRight size={15} className="stroke-[2.5]" />
-            </Link>
+          <ScrollReveal variant="fade-up" delay={660} duration={700}>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mt-7 md:mt-8">
+              {/* Primary Gold CTA */}
+              <Link
+                href="/#property-locations"
+                className="inline-flex items-center justify-center gap-2.5 h-[48px] sm:h-[50px] px-7 sm:px-8 bg-[#B8924B] hover:bg-[#C8A45D] text-white text-[12px] sm:text-[13px] font-bold tracking-[0.08em] uppercase rounded-[2px] transition-all duration-200 hover:-translate-y-0.5 shadow-md shadow-black/30 text-center"
+              >
+                <span>VIEW OUR PROPERTIES</span>
+                <ArrowRight size={15} className="stroke-[2.5]" />
+              </Link>
 
-            {/* Secondary Transparent CTA */}
-            <Link
-              href="/#divisions"
-              className="inline-flex items-center justify-center gap-2.5 h-[48px] sm:h-[50px] px-7 sm:px-8 bg-[#0B1117]/50 backdrop-blur-sm border border-[#B8924B]/90 hover:bg-[#B8924B] text-white text-[12px] sm:text-[13px] font-bold tracking-[0.08em] uppercase rounded-[2px] transition-all duration-200 hover:-translate-y-0.5 text-center"
-            >
-              <span>EXPLORE OUR DIVISIONS</span>
-              <ArrowRight size={15} className="stroke-[2.5]" />
-            </Link>
-          </div>
+              {/* Secondary Transparent CTA */}
+              <Link
+                href="/#divisions"
+                className="inline-flex items-center justify-center gap-2.5 h-[48px] sm:h-[50px] px-7 sm:px-8 bg-[#0B1117]/50 backdrop-blur-sm border border-[#B8924B]/90 hover:bg-[#B8924B] text-white text-[12px] sm:text-[13px] font-bold tracking-[0.08em] uppercase rounded-[2px] transition-all duration-200 hover:-translate-y-0.5 text-center"
+              >
+                <span>EXPLORE OUR DIVISIONS</span>
+                <ArrowRight size={15} className="stroke-[2.5]" />
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
       {/* 4. Bottom Information Bar */}
       <div className="container-custom relative z-20 pb-8 md:pb-10 pt-6 flex items-end justify-between w-full">
         {/* Bottom Left: Location Badge (aligns with text column) */}
-        <div className="flex items-center gap-3">
-          <MapPin size={18} className="fill-[#C8A45D] stroke-[#0B1117] text-[#C8A45D]" />
-          <div>
-            <span className="block text-[12px] font-bold tracking-[0.12em] text-white uppercase">
-              SHOALS, ALABAMA
-            </span>
-            <span className="block text-[10px] font-medium tracking-[0.16em] text-[#C8A45D] uppercase mt-0.5">
-              PROPERTY • DEVELOPMENT • OWNERSHIP
-            </span>
+        <ScrollReveal variant="fade-up" delay={780} duration={650}>
+          <div className="flex items-center gap-3">
+            <MapPin size={18} className="fill-[#C8A45D] stroke-[#0B1117] text-[#C8A45D]" />
+            <div>
+              <span className="block text-[12px] font-bold tracking-[0.12em] text-white uppercase">
+                SHOALS, ALABAMA
+              </span>
+              <span className="block text-[10px] font-medium tracking-[0.16em] text-[#C8A45D] uppercase mt-0.5">
+                PROPERTY • DEVELOPMENT • OWNERSHIP
+              </span>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Bottom Right: Scroll Cue with clean line + arrow */}
-        <div className="hidden sm:flex items-center gap-2.5 text-white/90">
-          <span className="text-[11px] font-bold tracking-[0.16em] uppercase">
-            SCROLL TO EXPLORE
-          </span>
-          <div className="flex flex-col items-center animate-subtle-float">
-            <div className="w-[1px] h-4 bg-white/70" />
-            <ArrowDown size={13} className="stroke-[2.5] text-white/90 -mt-0.5" />
+        <ScrollReveal variant="fade-up" delay={860} duration={650} className="hidden sm:block">
+          <div className="flex items-center gap-2.5 text-white/90">
+            <span className="text-[11px] font-bold tracking-[0.16em] uppercase">
+              SCROLL TO EXPLORE
+            </span>
+            <div className="flex flex-col items-center animate-subtle-float">
+              <div className="w-[1px] h-4 bg-white/70" />
+              <ArrowDown size={13} className="stroke-[2.5] text-white/90 -mt-0.5" />
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

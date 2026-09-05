@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 interface DivisionItem {
   id: string;
@@ -143,7 +144,7 @@ export default function OurDivisions() {
           {/* Left Block (Takes ~59% on desktop: Header + Card 01) */}
           <div className="w-full lg:w-[59%] flex flex-col sm:flex-row gap-3.5 sm:gap-4 items-stretch">
             {/* Section Header (35% of Left Block = ~20.65% of total width) */}
-            <div className="w-full sm:w-[35%] flex flex-col justify-between py-1 sm:py-2 pr-2">
+            <ScrollReveal variant="fade-up" delay={80} duration={700} className="w-full sm:w-[35%] flex flex-col justify-between py-1 sm:py-2 pr-2">
               <div>
                 <span className="font-condensed text-[#B08B3E] font-bold text-[12px] sm:text-[13px] tracking-[0.18em] uppercase">
                   Our Divisions
@@ -160,48 +161,102 @@ export default function OurDivisions() {
                   aria-hidden="true"
                 />
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Card 01: RETAIL (65% of Left Block) */}
-            <div className="w-full sm:w-[65%] bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300">
-              <div className="w-[46%] p-4 sm:p-5 lg:p-6 flex flex-col justify-between">
+            <ScrollReveal variant="fade-up" delay={180} duration={750} className="w-full sm:w-[65%] flex">
+              <div className="w-full bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300 card-luxury-hover">
+                <div className="w-[46%] p-4 sm:p-5 lg:p-6 flex flex-col justify-between">
+                  <div>
+                    <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
+                      01
+                    </span>
+                    <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
+                      Retail
+                    </h3>
+                    <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
+                      Vibrant retail centers in prime locations where businesses thrive and communities come together.
+                    </p>
+                  </div>
+                  <Link
+                    href="/divisions#retail"
+                    className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+                  >
+                    <span>Explore Retail</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                </div>
+
+                {/* Card 01 Image with Click-to-Lightbox */}
+                <div
+                  onClick={() => setLightboxIndex(0)}
+                  className="relative w-[54%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden cursor-pointer group/img"
+                  title="Click to view full image"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") setLightboxIndex(0);
+                  }}
+                >
+                  <Image
+                    src={DIVISIONS_DATA[0].image}
+                    alt={DIVISIONS_DATA[0].alt}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 55vw, 450px"
+                    className="object-cover object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
+                    <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Block: Card 02: FLEX (Takes ~41% on desktop) */}
+          <ScrollReveal variant="fade-up" delay={280} duration={750} className="w-full lg:w-[41%] flex">
+            <div className="w-full bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300 card-luxury-hover">
+              <div className="w-[45%] p-4 sm:p-5 lg:p-6 flex flex-col justify-between">
                 <div>
                   <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
-                    01
+                    02
                   </span>
                   <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
-                    Retail
+                    Flex
                   </h3>
                   <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
-                    Vibrant retail centers in prime locations where businesses thrive and communities come together.
+                    Versatile spaces designed for a wide range of businesses and operational needs.
                   </p>
                 </div>
                 <Link
-                  href="/divisions#retail"
+                  href="/divisions#flex"
                   className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
                 >
-                  <span>Explore Retail</span>
+                  <span>Explore Flex</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
                 </Link>
               </div>
 
-              {/* Card 01 Image with Click-to-Lightbox */}
+              {/* Card 02 Image with Click-to-Lightbox */}
               <div
-                onClick={() => setLightboxIndex(0)}
-                className="relative w-[54%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden cursor-pointer group/img"
+                onClick={() => setLightboxIndex(1)}
+                className="relative w-[55%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden cursor-pointer group/img"
                 title="Click to view full image"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setLightboxIndex(0);
+                  if (e.key === "Enter" || e.key === " ") setLightboxIndex(1);
                 }}
               >
                 <Image
-                  src={DIVISIONS_DATA[0].image}
-                  alt={DIVISIONS_DATA[0].alt}
+                  src={DIVISIONS_DATA[1].image}
+                  alt={DIVISIONS_DATA[1].alt}
                   fill
                   unoptimized
-                  sizes="(max-width: 640px) 55vw, 450px"
+                  sizes="(max-width: 640px) 55vw, 500px"
                   className="object-cover object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
@@ -211,214 +266,170 @@ export default function OurDivisions() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
+        </div>
 
-          {/* Right Block: Card 02: FLEX (Takes ~41% on desktop) */}
-          <div className="w-full lg:w-[41%] bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300">
-            <div className="w-[45%] p-4 sm:p-5 lg:p-6 flex flex-col justify-between">
+        {/* ================= ROW 2: CARD 03 (LAND LEASES - FULL WIDTH BANNER) ================= */}
+        <ScrollReveal variant="fade-up" delay={150} duration={800} className="w-full">
+          <div className="w-full bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-col sm:flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300 card-luxury-hover">
+            {/* Left Text Pane (aligned with Header column: ~20.65% width on desktop) */}
+            <div className="w-full sm:w-[20.65%] p-4 sm:p-5 lg:p-6 xl:p-7 flex flex-col justify-between">
               <div>
                 <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
-                  02
+                  03
                 </span>
                 <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
-                  Flex
+                  Land Leases
                 </h3>
                 <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
-                  Versatile spaces designed for a wide range of businesses and operational needs.
+                  Strategic land opportunities in high-traffic areas ideal for long-term success.
                 </p>
               </div>
               <Link
-                href="/divisions#flex"
+                href="/divisions#land-leases"
                 className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
               >
-                <span>Explore Flex</span>
+                <span>Explore Land Leases</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
               </Link>
             </div>
 
-            {/* Card 02 Image with Click-to-Lightbox */}
+            {/* Right Image Pane (Panoramic drone aerial with white parcel boundary) */}
             <div
-              onClick={() => setLightboxIndex(1)}
-              className="relative w-[55%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden cursor-pointer group/img"
+              onClick={() => setLightboxIndex(2)}
+              className="relative w-full sm:w-[79.35%] min-h-[220px] sm:min-h-[240px] lg:min-h-[270px] xl:min-h-[290px] overflow-hidden cursor-pointer group/img"
               title="Click to view full image"
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") setLightboxIndex(1);
+                if (e.key === "Enter" || e.key === " ") setLightboxIndex(2);
               }}
             >
               <Image
-                src={DIVISIONS_DATA[1].image}
-                alt={DIVISIONS_DATA[1].alt}
+                src={DIVISIONS_DATA[2].image}
+                alt={DIVISIONS_DATA[2].alt}
                 fill
                 unoptimized
-                sizes="(max-width: 640px) 55vw, 500px"
-                className="object-cover object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none"
+                sizes="(max-width: 640px) 100vw, 1400px"
+                className="object-cover object-center group-hover/img:scale-[1.03] transition-transform duration-700 ease-out select-none"
               />
               <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
-                <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
-                  <Maximize2 className="w-3.5 h-3.5" />
+                <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2.5 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
+                  <Maximize2 className="w-4 h-4" />
                 </span>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* ================= ROW 2: CARD 03 (LAND LEASES - FULL WIDTH BANNER) ================= */}
-        <div className="w-full bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-col sm:flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300">
-          {/* Left Text Pane (aligned with Header column: ~20.65% width on desktop) */}
-          <div className="w-full sm:w-[20.65%] p-4 sm:p-5 lg:p-6 xl:p-7 flex flex-col justify-between">
-            <div>
-              <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
-                03
-              </span>
-              <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
-                Land Leases
-              </h3>
-              <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
-                Strategic land opportunities in high-traffic areas ideal for long-term success.
-              </p>
-            </div>
-            <Link
-              href="/divisions#land-leases"
-              className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
-            >
-              <span>Explore Land Leases</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-            </Link>
-          </div>
-
-          {/* Right Image Pane (Panoramic drone aerial with white parcel boundary) */}
-          <div
-            onClick={() => setLightboxIndex(2)}
-            className="relative w-full sm:w-[79.35%] min-h-[220px] sm:min-h-[240px] lg:min-h-[270px] xl:min-h-[290px] overflow-hidden cursor-pointer group/img"
-            title="Click to view full image"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") setLightboxIndex(2);
-            }}
-          >
-            <Image
-              src={DIVISIONS_DATA[2].image}
-              alt={DIVISIONS_DATA[2].alt}
-              fill
-              unoptimized
-              sizes="(max-width: 640px) 100vw, 1400px"
-              className="object-cover object-center group-hover/img:scale-[1.03] transition-transform duration-700 ease-out select-none"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
-              <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2.5 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
-                <Maximize2 className="w-4 h-4" />
-              </span>
-            </div>
-          </div>
-        </div>
+        </ScrollReveal>
 
         {/* ================= ROW 3: CARD 04 + CARD 05 ================= */}
         <div className="flex flex-col lg:flex-row gap-3.5 sm:gap-4 items-stretch">
           {/* Card 04: BUILD TO SUIT (Takes ~59% on desktop) */}
-          <div className="w-full lg:w-[59%] bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300">
-            {/* Left text pane (matches ~35% of Left Block = ~20.65% total) */}
-            <div className="w-[35%] p-4 sm:p-5 lg:p-6 xl:p-7 flex flex-col justify-between">
-              <div>
-                <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
-                  04
-                </span>
-                <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
-                  Build to Suit
-                </h3>
-                <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
-                  Custom buildings tailored to your vision, built with quality and precision.
-                </p>
+          <ScrollReveal variant="fade-up" delay={180} duration={750} className="w-full lg:w-[59%] flex">
+            <div className="w-full bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300 card-luxury-hover">
+              {/* Left text pane (matches ~35% of Left Block = ~20.65% total) */}
+              <div className="w-[35%] p-4 sm:p-5 lg:p-6 xl:p-7 flex flex-col justify-between">
+                <div>
+                  <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
+                    04
+                  </span>
+                  <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
+                    Build to Suit
+                  </h3>
+                  <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
+                    Custom buildings tailored to your vision, built with quality and precision.
+                  </p>
+                </div>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+                >
+                  <span>Start a Conversation</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
+                </Link>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+
+              {/* Right image pane with Click-to-Lightbox */}
+              <div
+                onClick={() => setLightboxIndex(3)}
+                className="relative w-[65%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden cursor-pointer group/img"
+                title="Click to view full image"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") setLightboxIndex(3);
+                }}
               >
-                <span>Start a Conversation</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-              </Link>
-            </div>
-
-            {/* Right image pane with Click-to-Lightbox */}
-            <div
-              onClick={() => setLightboxIndex(3)}
-              className="relative w-[65%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden cursor-pointer group/img"
-              title="Click to view full image"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") setLightboxIndex(3);
-              }}
-            >
-              <Image
-                src={DIVISIONS_DATA[3].image}
-                alt={DIVISIONS_DATA[3].alt}
-                fill
-                unoptimized
-                sizes="(max-width: 640px) 65vw, 750px"
-                className="object-cover object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
-                <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 05: RESIDENTIAL (Takes ~41% on desktop) */}
-          <div className="w-full lg:w-[41%] bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300">
-            <div className="w-[45%] p-4 sm:p-5 lg:p-6 xl:p-7 flex flex-col justify-between">
-              <div>
-                <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
-                  05
-                </span>
-                <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
-                  Residential
-                </h3>
-                <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
-                  Thoughtfully planned.
-                  <br />
-                  Built for everyday life.
-                </p>
-              </div>
-              <div className="mt-3">
-                <span className="font-serif-story text-[#7D7364] text-[12.5px] sm:text-[13.5px]">
-                  [ Coming Soon ]
-                </span>
-              </div>
-            </div>
-
-            {/* Right Architectural House Blueprint Sketch Pane with Click-to-Lightbox */}
-            <div
-              onClick={() => setLightboxIndex(4)}
-              className="relative w-[55%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden bg-[#FAF6EE] flex items-center justify-center p-3 sm:p-4 cursor-pointer group/img"
-              title="Click to view full image"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") setLightboxIndex(4);
-              }}
-            >
-              <div className="relative w-full h-full min-h-[150px]">
                 <Image
-                  src={DIVISIONS_DATA[4].image}
-                  alt={DIVISIONS_DATA[4].alt}
+                  src={DIVISIONS_DATA[3].image}
+                  alt={DIVISIONS_DATA[3].alt}
                   fill
                   unoptimized
-                  sizes="(max-width: 640px) 50vw, 420px"
-                  className="object-contain object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none opacity-90"
+                  sizes="(max-width: 640px) 65vw, 750px"
+                  className="object-cover object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none"
                 />
-              </div>
-              <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/15 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
-                <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </span>
+                <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
+                  <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
+
+          {/* Card 05: RESIDENTIAL (Takes ~41% on desktop) */}
+          <ScrollReveal variant="fade-up" delay={280} duration={750} className="w-full lg:w-[41%] flex">
+            <div className="w-full bg-[#FAF6EE] border border-[#DCD3C7] overflow-hidden flex flex-row items-stretch group hover:border-[#B08B3E]/70 transition-all duration-300 card-luxury-hover">
+              <div className="w-[45%] p-4 sm:p-5 lg:p-6 xl:p-7 flex flex-col justify-between">
+                <div>
+                  <span className="font-serif-story text-[#B08B3E] text-[20px] sm:text-[22px] lg:text-[24px] xl:text-[26px] font-normal leading-none">
+                    05
+                  </span>
+                  <h3 className="font-condensed font-bold text-[#111820] text-[22px] sm:text-[24px] lg:text-[26px] xl:text-[28px] uppercase tracking-[0.03em] leading-tight mt-1.5">
+                    Residential
+                  </h3>
+                  <p className="font-sans text-[#2D3748] text-[13px] sm:text-[13.5px] lg:text-[14.5px] xl:text-[15px] leading-[1.48] mt-2 sm:mt-2.5">
+                    Thoughtfully planned.
+                    <br />
+                    Built for everyday life.
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <span className="font-serif-story text-[#7D7364] text-[12.5px] sm:text-[13.5px]">
+                    [ Coming Soon ]
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Architectural House Blueprint Sketch Pane with Click-to-Lightbox */}
+              <div
+                onClick={() => setLightboxIndex(4)}
+                className="relative w-[55%] min-h-[190px] sm:min-h-[210px] lg:min-h-[230px] xl:min-h-[240px] overflow-hidden bg-[#FAF6EE] flex items-center justify-center p-3 sm:p-4 cursor-pointer group/img"
+                title="Click to view full image"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") setLightboxIndex(4);
+                }}
+              >
+                <div className="relative w-full h-full min-h-[150px]">
+                  <Image
+                    src={DIVISIONS_DATA[4].image}
+                    alt={DIVISIONS_DATA[4].alt}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 50vw, 420px"
+                    className="object-contain object-center group-hover/img:scale-[1.04] transition-transform duration-700 ease-out select-none opacity-90"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/15 transition-colors duration-300 z-10 flex items-center justify-center pointer-events-none">
+                  <span className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 p-2 rounded-full bg-[#111820]/75 backdrop-blur-sm text-[#C8A45D] border border-[#C8A45D]/40 shadow-lg scale-90 group-hover/img:scale-100">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
