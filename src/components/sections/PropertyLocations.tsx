@@ -1,13 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 interface LocationItem {
   id: string;
   name: string;
   logo: string;
-  href: string;
+  href?: string;
 }
 
 const LOCATIONS: LocationItem[] = [
@@ -15,31 +14,26 @@ const LOCATIONS: LocationItem[] = [
     id: "shoppes",
     name: "Shoppes on 2nd",
     logo: "/images/locations/logo-shoppes.png",
-    href: "/property-locations#shoppes",
   },
   {
     id: "wilson",
     name: "Wilson Crossing",
     logo: "/images/locations/logo-wilson.png",
-    href: "/property-locations#wilson",
   },
   {
     id: "airport",
     name: "Airport Business Park",
     logo: "/images/locations/logo-airport.png",
-    href: "/property-locations#airport",
   },
   {
     id: "hwy72",
     name: "Hwy 72 Business Park",
     logo: "/images/locations/logo-hwy72.png",
-    href: "/property-locations#hwy72",
   },
   {
     id: "miniflex",
     name: "Mini Flex of the Shoals",
     logo: "/images/locations/logo-miniflex.png",
-    href: "/property-locations#miniflex",
   },
 ];
 
@@ -114,10 +108,8 @@ export default function PropertyLocations() {
                   idx === 4 ? "col-span-2 sm:col-span-1" : ""
                 }`}
               >
-                <Link
-                  href={loc.href}
-                  className="group relative flex flex-col items-center justify-center w-full h-[105px] sm:h-[120px] lg:h-[130px] px-2 transition-transform duration-300 hover:scale-[1.06]"
-                  title={`View ${loc.name}`}
+                <div
+                  className="group relative flex flex-col items-center justify-center w-full h-[105px] sm:h-[120px] lg:h-[130px] px-2"
                 >
                   <div className="relative w-full h-full max-w-[135px] sm:max-w-[155px] lg:max-w-[170px]">
                     <Image
@@ -126,10 +118,10 @@ export default function PropertyLocations() {
                       fill
                       unoptimized
                       sizes="(max-width: 640px) 135px, 170px"
-                      className="object-contain object-center opacity-90 group-hover:opacity-100 transition-opacity duration-300 filter drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] select-none"
+                      className="object-contain object-center opacity-90 transition-opacity duration-300 filter drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] select-none pointer-events-none"
                     />
                   </div>
-                </Link>
+                </div>
               </ScrollReveal>
             ))}
           </div>

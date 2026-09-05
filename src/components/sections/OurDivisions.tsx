@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -178,13 +177,14 @@ export default function OurDivisions() {
                       Vibrant retail centers in prime locations where businesses thrive and communities come together.
                     </p>
                   </div>
-                  <Link
-                    href="/divisions#retail"
-                    className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+                  <button
+                    type="button"
+                    onClick={() => setLightboxIndex(0)}
+                    className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3 cursor-pointer text-left"
                   >
                     <span>Explore Retail</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-                  </Link>
+                  </button>
                 </div>
 
                 {/* Card 01 Image with Click-to-Lightbox */}
@@ -231,13 +231,14 @@ export default function OurDivisions() {
                     Versatile spaces designed for a wide range of businesses and operational needs.
                   </p>
                 </div>
-                <Link
-                  href="/divisions#flex"
-                  className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(1)}
+                  className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3 cursor-pointer text-left"
                 >
                   <span>Explore Flex</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-                </Link>
+                </button>
               </div>
 
               {/* Card 02 Image with Click-to-Lightbox */}
@@ -285,13 +286,14 @@ export default function OurDivisions() {
                   Strategic land opportunities in high-traffic areas ideal for long-term success.
                 </p>
               </div>
-              <Link
-                href="/divisions#land-leases"
-                className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+              <button
+                type="button"
+                onClick={() => setLightboxIndex(2)}
+                className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3 cursor-pointer text-left"
               >
                 <span>Explore Land Leases</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-              </Link>
+              </button>
             </div>
 
             {/* Right Image Pane (Panoramic drone aerial with white parcel boundary) */}
@@ -340,13 +342,14 @@ export default function OurDivisions() {
                     Custom buildings tailored to your vision, built with quality and precision.
                   </p>
                 </div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3"
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(3)}
+                  className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors mt-3 cursor-pointer text-left"
                 >
-                  <span>Start a Conversation</span>
+                  <span>Explore Build to Suit</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
-                </Link>
+                </button>
               </div>
 
               {/* Right image pane with Click-to-Lightbox */}
@@ -394,8 +397,16 @@ export default function OurDivisions() {
                     Built for everyday life.
                   </p>
                 </div>
-                <div className="mt-3">
-                  <span className="font-serif-story text-[#7D7364] text-[12.5px] sm:text-[13.5px]">
+                <div className="mt-3 flex items-center gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setLightboxIndex(4)}
+                    className="inline-flex items-center gap-1.5 font-condensed font-bold text-[11.5px] sm:text-[12px] lg:text-[12.5px] tracking-[0.09em] uppercase text-[#111820] group-hover:text-[#B08B3E] transition-colors cursor-pointer text-left"
+                  >
+                    <span>Explore Residential</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
+                  </button>
+                  <span className="font-serif-story text-[#7D7364] text-[11.5px] sm:text-[12.5px]">
                     [ Coming Soon ]
                   </span>
                 </div>
